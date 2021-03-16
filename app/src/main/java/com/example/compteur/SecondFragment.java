@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
-
+    private int count = 0;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -23,12 +24,38 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
+        view.findViewById(R.id.button_retour).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+                .navigate(R.id.action_SecondFragment_to_FirstFragment));
+
+        view.findViewById(R.id.button_plus).setOnClickListener(view1 -> addition());
+
+        view.findViewById(R.id.button_moins).setOnClickListener(view1 -> subtraction());
+
+        view.findViewById(R.id.button_raz).setOnClickListener(view1 -> raz());
+
     }
+
+    private void addition(){
+        count++;
+        modifyViewText(count);
+    }
+
+    private void subtraction(){
+        if (count > 0){
+            count--;
+            modifyViewText(count);
+        }
+    }
+
+
+    private void modifyViewText(int count){
+        TextView t = getView().findViewById(R.id.textview_nombre);
+        t.setText(count);
+    }
+
+    private void raz(){
+        count = 0;
+        modifyViewText(count);
+    }
+
 }
