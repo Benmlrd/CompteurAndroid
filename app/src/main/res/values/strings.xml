@@ -14,4 +14,5 @@
     <string name="moins">-</string>
     <string name="retour">Retour</string>
     <string name="etat">Etat actuel du compteur :</string>
+    <string name="compteur">Compteur</string>
 </resources>
