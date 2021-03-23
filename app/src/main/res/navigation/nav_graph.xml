@@ -31,5 +31,8 @@
 
     <fragment
         android:id="@+id/SettingsFragment"
-        android:name="com.example.compteur.SettingsFragment"/>
+        android:name="com.example.compteur.SettingsFragment"
+        android:label="@string/settings_fragment_label"
+        tools:layout="@xml/root_preferences"
+        />
 </navigation>

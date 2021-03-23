@@ -34,7 +34,7 @@ public class SecondFragment extends Fragment {
        count = viewModel.getCount();
         modifyViewText(count);
 
-       // view.findViewById(R.id.action_settings).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_SettingsFragment));
+        //iew.findViewById(R.id.action_settings).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_SettingsFragment));
 
         view.findViewById(R.id.button_plus).setOnClickListener(view1 -> addition());
 
@@ -68,6 +68,7 @@ public class SecondFragment extends Fragment {
     private void raz(){
         count = 0;
         modifyViewText(count);
+        viewModel.setCount(count);
     }
 
 }
