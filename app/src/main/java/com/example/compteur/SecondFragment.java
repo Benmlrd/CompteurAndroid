@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
     private int count = 0;
+    //On créée le viewModel par rapport à la classe que l'on a fait
     private CountViewModel viewModel;
     @Override
     public View onCreateView(
@@ -29,17 +30,18 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.button_retour).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
                 .navigate(R.id.action_SecondFragment_to_FirstFragment));
 
+        view.findViewById(R.id.parametres).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+                .navigate(R.id.action_SecondFragment_to_SettingsFragment));
+
          viewModel = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
 
        count = viewModel.getCount();
         modifyViewText(count);
 
-        //iew.findViewById(R.id.action_settings).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_SettingsFragment));
-
+        //Liaison entre les boutons et les fonctions
+        //view.findViewById(R.id.action_settings).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_SettingsFragment));
         view.findViewById(R.id.button_plus).setOnClickListener(view1 -> addition());
-
         view.findViewById(R.id.button_moins).setOnClickListener(view1 -> subtraction());
-
         view.findViewById(R.id.button_raz).setOnClickListener(view1 -> raz());
 
     }

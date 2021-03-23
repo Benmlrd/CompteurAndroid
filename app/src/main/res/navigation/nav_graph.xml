@@ -24,15 +24,6 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
-        <action
-            android:id="@+id/action_SecondFragment_to_SettingsFragment"
-            app:destination="@id/SettingsFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/SettingsFragment"
-        android:name="com.example.compteur.SettingsFragment"
-        android:label="@string/settings_fragment_label"
-        tools:layout="@xml/root_preferences"
-        />
 </navigation>
