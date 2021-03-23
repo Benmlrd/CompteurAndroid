@@ -30,8 +30,8 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.button_retour).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
                 .navigate(R.id.action_SecondFragment_to_FirstFragment));
 
-        view.findViewById(R.id.parametres).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
-                .navigate(R.id.action_SecondFragment_to_SettingsFragment));
+       // view.findViewById(R.id.parametres).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+             //   .navigate(R.id.action_SecondFragment_to_SettingsFragment));
 
          viewModel = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
 
