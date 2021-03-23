@@ -1,5 +1,6 @@
 package com.example.compteur;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -23,6 +24,8 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        Intent intent = getIntent();
+
     }
 
     @Override

@@ -1,8 +1,10 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="@string/general">
 
         <SwitchPreferenceCompat
+            android:id="@+id/neg_values"
             app:key="neg"
             app:title="@string/negatif" />
     </PreferenceCategory>

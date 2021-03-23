@@ -1,18 +1,25 @@
 package com.example.compteur;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+
+import androidx.annotation.*;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
+
+import java.util.Objects;
 
 public class SecondFragment extends Fragment {
     private int count = 0;
+    private SharedPreferences prefs;
+    private boolean switchPref;
     //On créée le viewModel par rapport à la classe que l'on a fait
     private CountViewModel viewModel;
     @Override
@@ -41,6 +48,8 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.button_moins).setOnClickListener(view1 -> subtraction());
         view.findViewById(R.id.button_raz).setOnClickListener(view1 -> raz());
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        switchPref = prefs.getBoolean("neg_values", false);
     }
 
     private void addition(){
@@ -50,7 +59,7 @@ public class SecondFragment extends Fragment {
     }
 
     private void subtraction(){
-        if (count > 0){
+        if ((count > 0) || (switchPref)){
             count--;
             modifyViewText(count);
             viewModel.setCount(count);

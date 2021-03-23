@@ -17,7 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
+    Intent intent;
+    Boolean neg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivityForResult(new Intent(this, SettingsActivity.class), 0);
+            intent = new Intent(this, SettingsActivity.class);
+            //startActivityForResult(intent, 0);
+            intent.putExtra("neg", neg);
+            startActivity(intent);
             return true;
         }
 
