@@ -8,10 +8,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
     private int count = 0;
+    private CountViewModel viewModel;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -27,6 +29,11 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.button_retour).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
                 .navigate(R.id.action_SecondFragment_to_FirstFragment));
 
+         viewModel = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
+
+       count = viewModel.getCount();
+        modifyViewText(count);
+
        // view.findViewById(R.id.action_settings).setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_SettingsFragment));
 
         view.findViewById(R.id.button_plus).setOnClickListener(view1 -> addition());
@@ -39,22 +46,23 @@ public class SecondFragment extends Fragment {
 
     private void addition(){
         count++;
-
         modifyViewText(count);
+        viewModel.setCount(count);
     }
 
     private void subtraction(){
         if (count > 0){
             count--;
             modifyViewText(count);
+            viewModel.setCount(count);
         }
     }
 
 
     private void modifyViewText(int count){
-        String count2 = String.valueOf(count);
+        String count3 = String.valueOf(count);
         TextView t = getView().findViewById(R.id.textview_nombre);
-        t.setText(count2);
+        t.setText(count3);
     }
 
     private void raz(){

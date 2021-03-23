@@ -4,12 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.Objects;
+
 public class FirstFragment extends Fragment {
+
 
     @Override
     public View onCreateView(
@@ -29,6 +34,12 @@ public class FirstFragment extends Fragment {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
+
         });
+
+        CountViewModel viewModel = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
+        String count3 = String.valueOf(viewModel.getCount());
+        TextView t = requireView().findViewById(R.id.editTextNumber2);
+        t.setText(count3);
     }
 }

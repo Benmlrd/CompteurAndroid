@@ -15,30 +15,13 @@ import java.util.Random;
 
 
 public class CountViewModel extends ViewModel {
-    MutableLiveData<List<Integer>> count;
+    private int count;
 
-
-    public void setCount(List<Integer> count2){
-        count.setValue(count2);
+    public void setCount(int count2){
+        count = count2;
     }
 
-    public LiveData<List<Integer>> getCount(){
-        if (count == null){
-            count = new MutableLiveData<>();
-            loadCount();
-        }
-        return count;
+    public int getCount(){
+         return count;
     }
-
-    private void loadCount(){
-        Handler myHandler = new Handler();
-        myHandler.postDelayed(() -> {
-            List<Integer> countSample = new ArrayList<>();
-            countSample.add(0);
-            long seed = System.nanoTime();
-            Collections.shuffle(countSample, new Random(seed));
-            count.setValue(countSample);
-        }, 5000);
-    }
-
 }
